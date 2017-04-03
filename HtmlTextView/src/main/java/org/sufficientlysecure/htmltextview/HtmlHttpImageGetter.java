@@ -73,9 +73,10 @@ public class HtmlHttpImageGetter implements ImageGetter {
     /**
      * Static inner {@link AsyncTask} that keeps a {@link WeakReference} to the {@link UrlDrawable}
      * and {@link HtmlHttpImageGetter}.
-     * <p/>
+     * <p>
      * This way, if the AsyncTask has a longer life span than the UrlDrawable,
      * we won't leak the UrlDrawable or the HtmlRemoteImageGetter.
+     * </p>
      */
     private static class ImageGetterAsyncTask extends AsyncTask<String, Void, Drawable> {
         private final WeakReference<UrlDrawable> drawableReference;
