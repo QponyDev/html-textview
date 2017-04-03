@@ -29,20 +29,24 @@ import android.util.Log;
 import android.widget.TextView;
 
 /**
- * <p/>
+ * <p>
  * A {@link android.widget.TextView} that insert spaces around its text spans where needed to prevent
- * {@link IndexOutOfBoundsException} in {@link #onMeasure(int, int)} on Jelly Bean.
- * <p/>
+ * {@link IndexOutOfBoundsException} in {@link #onMeasure(int, int)} on Jelly Bean.</p>
+ * <p>
  * When {@link #onMeasure(int, int)} throws an exception, we try to fix the text by adding spaces
  * around spans, until it works again. We then try removing some of the added spans, to minimize the
  * insertions.
- * <p/>
+ * </p>
+ * <p>
  * The fix is time consuming (a few ms, it depends on the size of your text), but it should only
  * happen once per text change.
- * <p/>
+ * </p>
+ * <p>
  * See http://code.google.com/p/android/issues/detail?id=35466
- * <p/>
+ * </p>
+ * <p>
  * From https://gist.github.com/pyricau/3424004 with fix from comments
+ * </p>
  */
 public class JellyBeanSpanFixTextView extends TextView {
 
