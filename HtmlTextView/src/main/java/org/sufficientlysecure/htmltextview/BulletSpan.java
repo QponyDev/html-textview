@@ -13,22 +13,11 @@ import android.text.style.LeadingMarginSpan;
  * Created by michal.luszczuk on 20.03.2017.
  */
 
-public class BulletSpan implements LeadingMarginSpan, ParcelableSpan {
+public class BulletSpan implements LeadingMarginSpan {
 
     public static final int BULLET_SPAN = 1010;
 
     public static final int STANDARD_GAP_WIDTH = 2;
-    public static final Creator<BulletSpan> CREATOR = new Creator<BulletSpan>() {
-        @Override
-        public BulletSpan createFromParcel(Parcel source) {
-            return new BulletSpan(source);
-        }
-
-        @Override
-        public BulletSpan[] newArray(int size) {
-            return new BulletSpan[size];
-        }
-    };
 
     private static final int BULLET_RADIUS = 3;
     private static Path sBulletPath = null;
@@ -104,22 +93,5 @@ public class BulletSpan implements LeadingMarginSpan, ParcelableSpan {
 
     public int getSpanTypeIdInternal() {
         return BULLET_SPAN;
-    }
-
-    @Override
-    public int getSpanTypeId() {
-        return BULLET_SPAN;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(this.mGapWidth);
-        dest.writeByte(this.mWantColor ? (byte) 1 : (byte) 0);
-        dest.writeInt(this.mColor);
     }
 }
